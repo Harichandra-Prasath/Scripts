@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir=$(fd -t d --max-depth 1 . '/home/hcp_0/' | fzf-tmux -p --reverse)
+dir=$(fd -t d --max-depth 2 . "$HOME" | fzf-tmux -p --reverse)
 
 # If empty, exit
 if [ "$dir" = "" ]; then
@@ -20,6 +20,5 @@ tmux switchc -t  `tmux -u new-session -c "$dir" -s "$_name" -n "$_name" -dP`
 
 sleep 0.3
 
-# Send VsCode keys
-tmux send-keys -t "$_name":"$_name" "code ." Enter
+tmux send-keys -t "$_name":"$_name" "nvim ." Enter
 
