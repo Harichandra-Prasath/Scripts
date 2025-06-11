@@ -47,9 +47,9 @@ function noter() {
 	
 	# Try to check for the tmux session	
 	if ! tmux switch-client -t $BASE_SESSION; then 
-		new_session_manager "$CHOICE"	
+		new_session_manager "$WDIR$CHOICE"	
 	else
-		window_manager "$CHOICE"
+		window_manager "$WDIR$CHOICE"
 	fi
 	
 	
