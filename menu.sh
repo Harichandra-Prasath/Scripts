@@ -7,9 +7,12 @@ SB='#81a2be'
 SF='#1d1f21'
 FONT='Cousine-12'
 
+function cool_dmenu() {
+dmenu -i -fn $FONT -l $L -nb $NB -nf $NF -sb $SB -sf $SF
+}
 
 open_menu () {
-	dmenu_path | dmenu -i  -fn $FONT -l $L  -nb $NB  -nf  $NF -sb $SB -sf  $SF | xargs -r -d '\n' -I{} sh -c '{} &' 
+	dmenu_path | cool_dmenu | xargs -r -d '\n' -I{} sh -c '{} &' 
 }
 
 open_menu
