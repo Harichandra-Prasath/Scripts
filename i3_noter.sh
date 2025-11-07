@@ -19,7 +19,7 @@ dmenu -i -fn $FONT -l $L -nb $NB -nf $NF -sb $SB -sf $SF -p "$1" $2
 
 
 function window_manager() {
-	tmux new-window -t $BASE_SESSION:1 -n "noter"
+	tmux new-window -t $BASE_SESSION:5 -n "noter"
 	tmux send-keys -t "$BASE_SESSION:noter" "nvim $1" C-m
 	tmux select-window -t "$BASE_SESSION:noter"
 }
@@ -47,9 +47,9 @@ function noter() {
 	
 	# Try to check for the tmux session	
 	if ! tmux switch-client -t $BASE_SESSION; then 
-		new_session_manager "$WDIR$CHOICE"	
+		new_session_manager "$WDIR$CHOICE.txt"	
 	else
-		window_manager "$WDIR$CHOICE"
+		window_manager "$WDIR$CHOICE.txt"
 	fi
 	
 	
