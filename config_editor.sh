@@ -5,6 +5,12 @@
 config_editor () {
 	
 	file=$(find "$HOME"/.config/i3 "$HOME"/.config/picom "$HOME"/.config/nvim "$HOME"/.config/neofetch | fzf-tmux -p --reverse)
+	# If empty, exit
+	if [ "$file" = "" ]; then
+		exit
+	fi
+
+
 	nvim "$file"
 }
 
